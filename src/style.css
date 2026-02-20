@@ -1,0 +1,106 @@
+:root {
+  --bg-color: #1e1e1e;
+  --text-color: #d4d4d4;
+  --pane-bg: #252526;
+  --border-color: #3e3e42;
+  --accent-color: #007acc;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  /* Prevent body scroll */
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+#app {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--pane-bg);
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Critical: constrain pane so children can scroll */
+  min-width: 0;
+  /* Flexbox fix */
+}
+
+.sidebar {
+  flex: 0 0 300px;
+  /* Fixed width for dashboard */
+  /* overflow-y: auto;  <-- REMOVED to let #event-log scroll */
+  overflow: hidden;
+  /* Force children to handle overflow */
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.editor-input {
+  flex: 1;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  outline: none;
+  white-space: pre-wrap;
+  /* Preserve whitespace */
+  overflow-y: auto;
+  /* Enable scroll */
+  border: 1px solid var(--border-color);
+  min-height: 0;
+  /* Flexbox fix */
+}
+
+#event-log {
+  flex: 1;
+  min-height: 0;
+  /* Critical for nested flex scrolling */
+  overflow-y: auto;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.log-entry {
+  padding: 4px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-key {
+  color: #ce9178;
+  font-weight: bold;
+}
+
+.log-type {
+  color: #569cd6;
+}
